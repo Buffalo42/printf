@@ -57,6 +57,9 @@ int _printf(const char *format, ...)
 					putchar('%');
 					nc_count++;
 					break;
+				case 'd':
+				case 'i':
+					break;
 				default:
 					putchar('%');
 					nc_count++;
