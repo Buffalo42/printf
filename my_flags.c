@@ -4,7 +4,7 @@
  * my_flags - Calculates any active flags
  * @format: Formatted string to print the arguments
  * @n: parameter
- * Retirn: Flags
+ * Return: Flags
  */
 
 int my_flags(const char *format, int *n)
