@@ -5,10 +5,10 @@
 int _printf(const char *format, ...);
 
 /**
- * _printf - Custom printf function that produces output according to a format.
+ * _printf - Custom printf function.
  *
  * @format: The format string.
- * @...: The variable number of arguments corresponding to format specifiers.
+ * @...: The variable number of arguments.
  *
  * Return: The number of characters printed.
  */
