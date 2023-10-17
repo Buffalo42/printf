@@ -3,7 +3,6 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
-
 /**
  * print_char - Print a character.
  *
@@ -12,14 +11,14 @@ int _printf(const char *format, ...);
  *
  * Return: the number of charachters printed.
  */
-void print_char(va_list nc, int *nc_count)
+
+int print_char(va_list nc, int *nc_count)
 {
-	int c = 0;
+	int c = va_arg(nc, int);
 
-	c = va_arg(nc, int);
-
-	putchar(c);
 	(*nc_count)++;
+	putchar(c);
+	return (*nc_count);
 }
 
 /**
@@ -30,20 +29,20 @@ void print_char(va_list nc, int *nc_count)
  *
  * Return: void
  */
-void print_string(va_list nc, int *nc_count)
-{
-	const char *s;
 
-	s = va_arg(nc, const char *);
+int print_string(va_list nc, int *nc_count)
+{
+	const char *s = va_arg(nc, const char *);
 
 	if (s == NULL)
 		s = "(null)";
 	while (*s)
 	{
 		putchar(*s);
-		s++;
 		(*nc_count)++;
+		s++;
 	}
+	return (*nc_count);
 }
 
 /**
@@ -53,10 +52,11 @@ void print_string(va_list nc, int *nc_count)
  *
  * Return: void
  */
-void print_percent(int *nc_count)
+int print_percent(int *nc_count)
 {
 	putchar('%');
 	(*nc_count)++;
+	return (*nc_count);
 }
 
 /**
@@ -67,12 +67,13 @@ void print_percent(int *nc_count)
  *
  * Return: void
  */
-void print_unknown(int *nc_count, const char *format)
+int print_unknown(int *nc_count, const char *format)
 {
 	putchar('%');
 	(*nc_count)++;
 	putchar(*format);
 	(*nc_count)++;
+	return (*nc_count);
 }
 
 /**
@@ -106,23 +107,23 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					print_char(nc, &nc_count);
+					nc_count += print_char(nc, &nc_count);
 					break;
 				case 's':
-					print_string(nc, &nc_count);
+					nc_count += print_string(nc, &nc_count);
 					break;
 				case '%':
-					print_percent(&nc_count);
+					nc_count += print_percent(&nc_count);
 					break;
 				case 'd':
 				case 'i':
-					print_int(nc, &nc_count);
+					nc_count += print_int(nc, &nc_count);
 					break;
 				case 'b':
-					print_bin(nc, &nc_count);
+					nc_count += print_bin(nc, &nc_count);
 					break;
 				default:
-					print_unknown(&nc_count, format);
+					nc_count += print_unknown(&nc_count, format);
 					break;
 			}
 		}
