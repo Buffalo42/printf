@@ -1,6 +1,6 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include "main.h"
 
 int _printf(const char *format, ...);
 
@@ -14,7 +14,9 @@ int _printf(const char *format, ...);
  */
 void print_char(va_list nc, int *nc_count)
 {
-	int c = va_arg(nc, int);
+	int c = 0;
+
+	c = va_arg(nc, int);
 
 	putchar(c);
 	(*nc_count)++;
@@ -30,7 +32,9 @@ void print_char(va_list nc, int *nc_count)
  */
 void print_string(va_list nc, int *nc_count)
 {
-	const char *s = va_arg(nc, const char *);
+	const char *s;
+
+	s = va_arg(nc, const char *);
 
 	if (s == NULL)
 		s = "(null)";
@@ -128,4 +132,3 @@ int _printf(const char *format, ...)
 	va_end(nc);
 	return (nc_count);
 }
-
