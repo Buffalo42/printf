@@ -16,13 +16,8 @@ int _printf(const char *format, ...)
 	int nc_count = 0;
 	const char *s;
 	int c = 0;
-	unsigned int binary_num = 0;
 	int num = 0;
-	int precision = -1;
-	int flags = 0;
-	int width = 0;
-	int size = 0;
-
+	
 	va_start(nc, format);
 
 	while (*format)
@@ -64,33 +59,6 @@ int _printf(const char *format, ...)
 				case 'b':
 					binary_num = va_arg(nc, unsigned int);
 					print_bin(binary_num);
-					nc_count++;
-					break;
-				case 'd':
-				case 'i':
-					num = va_arg(nc, int);
-					print_int(num);
-					nc_count++;
-					break;
-				case '.':
-					precision = my_precision(format, &nc_count, nc);
-					nc_count++;
-					break;
-				case '-':
-				case '+':
-				case '0':
-				case '#':
-				case ' ':
-					flags = my_flags(format, &nc_count);
-					nc_count++;
-					break;
-				case '*':
-					width = my_width(format, &nc_count, nc);
-					nc_count++;
-					break;
-				case 'l':
-				case 'h':
-					size = my_size(format, &nc_count);
 					nc_count++;
 					break;
 				default:
