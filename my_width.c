@@ -2,9 +2,10 @@
 
 /**
  * my_width - Calculates the printing width
+ *
  * @format: Formatted string to print the arguments
  * @k: List of arguments to be printed
- * @lists: list of arguments
+ * @lists: list of arguments printed
  *
  * Return: width
  */

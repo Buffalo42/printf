@@ -8,8 +8,6 @@ int _printf(const char *format, ...);
  *
  * @format: The format string.
  * @...: The variable number of arguments.
- * @nc: the argumenet list
- * @s: the string printed
  * Return: The number of characters printed.
  */
 int _printf(const char *format, ...)

@@ -2,6 +2,7 @@
 
 /**
  * my_size - Calculates size to cast argument
+ *
  * @format: Formatted string to print arguments
  * @k: Arguments to be printed
  *
@@ -19,7 +20,7 @@ int my_size(const char *format, int *k)
 		size = S_SHORT;
 
 	if (size == 0)
-		*k = sip_k -1;
+		*k = sip_k - 1;
 	else
 		*k = sip_k;
 

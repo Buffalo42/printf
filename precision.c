@@ -2,14 +2,15 @@
 
 /**
  * my_precision - Calculates precision for printing
+ *
  * @format: Formatted string to print arguments
- * @m: Arguments tobe printed
+ * @m: Arguments to be printed
  * @lists: list of arguments
  *
  * Return: Precision
  */
 
-int my_precision( const char *format, int *m, va_list list)
+int my_precision(const char *format, int *m, va_list list)
 {
 	int sip_m = *m + 1;
 	int precision = -1;
@@ -35,7 +36,7 @@ int my_precision( const char *format, int *m, va_list list)
 		else
 			break;
 	}
-	
+
 	*m = sip_m - 1;
 
 	return (precision);
