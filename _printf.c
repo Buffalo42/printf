@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			putchar(*format);
+			_putchar(*format);
 			nc_count++;
 		}
 		else
@@ -36,23 +36,26 @@ int _printf(const char *format, ...)
 				case 'c':
 					c = va_arg(nc, int);
 
-					putchar(c);
+					_putchar(c);
 					nc_count++;
 					break;
 				case 's':
 					s = va_arg(nc, const char *);
 
 					if (s == NULL)
+					{
 						s = "(null)";
+						nc_count++;
+					}
 					while (*s)
 					{
-						putchar(*s);
-						s++;
+						_putchar(*s);
 						nc_count++;
+						s++;
 					}
 					break;
 				case '%':
-					putchar('%');
+					_putchar('%');
 					nc_count++;
 					break;
 					/*
@@ -60,9 +63,7 @@ int _printf(const char *format, ...)
 					 break;
 					 */
 				default:
-					putchar('%');
-					nc_count++;
-					putchar(*format);
+					_putchar(*format);
 					nc_count++;
 					break;
 			}
