@@ -56,11 +56,9 @@ int _printf(const char *format, ...)
 					putchar('%');
 					nc_count++;
 					break;
-				case 'b':
-					binary_num = va_arg(nc, unsigned int);
-					print_bin(binary_num);
-					nc_count++;
+				/*case 'b':
 					break;
+					*/
 				default:
 					putchar('%');
 					nc_count++;
