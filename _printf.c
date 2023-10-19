@@ -16,8 +16,7 @@ int _printf(const char *format, ...)
 	int nc_count = 0;
 	const char *s;
 	int c = 0;
-	int num = 0;
-	
+
 	va_start(nc, format);
 
 	while (*format)
@@ -56,9 +55,10 @@ int _printf(const char *format, ...)
 					putchar('%');
 					nc_count++;
 					break;
-				/*case 'b':
-					break;
-					*/
+					/*
+					 * case 'b':
+					 break;
+					 */
 				default:
 					putchar('%');
 					nc_count++;
