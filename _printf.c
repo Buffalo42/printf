@@ -16,15 +16,14 @@ int _printf(const char *format, ...)
 	int nc_count = 0;
 	const char *s;
 	int c = 0;
-	int num = 0;
-	
+
 	va_start(nc, format);
 
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			putchar(*format);
+			_putchar(*format);
 			nc_count++;
 		}
 		else
@@ -37,34 +36,34 @@ int _printf(const char *format, ...)
 				case 'c':
 					c = va_arg(nc, int);
 
-					putchar(c);
+					_putchar(c);
 					nc_count++;
 					break;
 				case 's':
 					s = va_arg(nc, const char *);
 
 					if (s == NULL)
+					{
 						s = "(null)";
+						nc_count++;
+					}
 					while (*s)
 					{
-						putchar(*s);
-						s++;
+						_putchar(*s);
 						nc_count++;
+						s++;
 					}
 					break;
 				case '%':
-					putchar('%');
+					_putchar('%');
 					nc_count++;
 					break;
-				case 'b':
-					binary_num = va_arg(nc, unsigned int);
-					print_bin(binary_num);
-					nc_count++;
-					break;
+					/*
+					 * case 'b':
+					 break;
+					 */
 				default:
-					putchar('%');
-					nc_count++;
-					putchar(*format);
+					_putchar(*format);
 					nc_count++;
 					break;
 			}
